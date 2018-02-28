@@ -1,0 +1,88 @@
+Title         : Q & A
+Author        : Cheng Zhang
+
+[TITLE]
+
+# 问题解答 
+- Abstract Class: Java中的**抽象类**，与一般类的区别在于**抽象类无法被实现只能被继承**。抽象类中可以声明**抽象方法**，抽象方法相当于只给出方法的名称，而不给出方法的具体实现,需要在子类中实现相应的方法。示例如下：
+```Java
+// Normal Class
+public class Animal(){
+    private String name;
+    private Integer weight;
+    public void setName(String name){
+        this.name = name;
+    }
+}
+// If you want to use "Animal", you can just instantiate it
+public static void mian(){
+    Animal animal1 = new Anmial();
+    // and use the method
+    animal1.setName("Peter");
+}
+// Abstract Class
+public abstract class Animal(){
+    private String name;
+    private Integer weight;
+    // Normal method
+    public void setName(String name){
+        this.name = name;
+    }
+    // Abstract method
+    public void setWeight(Integer animalWeight);
+}
+// You cannot instantiate abstract class "Animal", you have to create a class to inherit it.
+public class Dog extends Animal(){
+    // And you have to implement the abstract method "setWeight"
+    public void setWeight(Integer animalWeight){
+        this.weight = animalWeight;
+    }
+}
+// Then you can instantiate the class Dog
+public static void main(String[] args){
+    Dog dog1 = new Dog();
+    dog.setWeight(100);
+}
+```
+- Static: Java中Static分别用于**静态方法**、**静态变量**，与普通方法和变量的区别在于不需要实例化，可以直接通过引用类名进行调用。示例如下：
+```Java
+public class Math(){
+    // Static variable
+    public static String name = "Test"; 
+    // Static method
+    public static int add(int value1, int value2){
+        int result = value1 + value2;
+        return result;
+    }
+}
+// Then you can use "add" method without instantiate the "Math" object
+public static void main(String[] args){
+    int value = Math.add(1, 2);
+    // Get varialbe "name" without instantiate the the "Math" object 
+    System.out.println(Math.name);
+}
+```
+- Interface: Java中的**接口**，与Abstract class相似，都可以认为是一种特殊的Class。区别表现在：
+  - Interface只能被实现**(implement)**，不能被实例化**(Instantiate)**; 
+  - Interface中的所有方法必须为**抽象方法**（但不需要添加abstract关键字），且在实现该Interface时需要实现所有的方法。示例如下：
+```Java
+// There is an example of Interface
+public interface Animal(){
+    private String name;
+    private Integer weight;
+    // The method of interface must be a abstract method (you can just define the name and parameters rather than the detail of the method)
+    // And you do not need to write "abstract" key word.
+    public void setName(String name);
+}
+// Then you can "implement" the "Animal" interface
+public class Dog implements Animal(){
+    // You have to implement all methods in the Interface
+    public void setName(String nameNew){
+        this.name = nameNew;
+    }
+}
+```
+- <E>: Java的一大特性**泛型(Generics)**, 即在定义类时无法确定其中要利用的某个变量的类型，先以一个符号（如E，各种字母均可）代替，在Instantiate这个类时再指定该变量的类型。类似于定义一个Array时不确定里面将会存储什么类型的元素，先以一个字母E代替，真正使用时再指定具体的类型。示例如下：
+```Java
+
+```
